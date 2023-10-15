@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<a th:href="@{/api/client/delete/{id}(id=${client.id})}"  th:object="${client}" method="POST" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?')">Supprimer</a>-->
+<form th:action="@{/api/client/delete/{id}(id=${client.id})}"  method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?')">
+    <input type="hidden" name="_method" value="DELETE">
+    <input style=" margin-left:700px;margin-top:200px;" type="submit" value="Supprimer">
+</form>
+<!--
+<a th:href="@{/api/client/delete/{id}(id=${client.id})}" th:object="${client}" onclick="deleteClient(${client.id})">Supprimer</a>
+-->
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org
+http://thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="card" style="width: 30rem; margin-left:650px; margin-top:120px; padding-bottom: 10px;">
+    <div class="card-body" >
+        <h1 style="padding-left:20px;">Ajouter un Client</h1>
+        <form th:object="${client}" th:action="@{/api/client/addnew}" method="POST">
+            <div style="margin-left: 70px; margin-top:25px">
+                <div style="margin-left: 30px;">
+                    <label>Nom du Client:</label>
+                    <div></div>
+                    <label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" th:field="*{nomClient}" required>
+                        </div>
+                        <!-- <input type="text" th:field="*{nom_produit}" required>-->
+                    </label><br>
+                    <label>Email:</label>
+                    <div></div>
+                    <label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" th:field="*{email}" required>
+                        </div>
+                        <!--        <input type="text" th:field="*{category}" required>-->
+                    </label><br>
+                    <label>Telephone:</label>
+                    <div></div>
+                    <label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  th:field="*{tel}" required>
+                        </div>
+                        <!--        <input type="number" th:field="*{quantite}" required>-->
+                    </label><br>
+                    <label>ID du Produit:</label>
+                    <div></div>
+                    <select class="form-select" name="produitId" required>
+                        <option value="">Sélectionnez un produit</option>
+                        <option th:each="produit : ${produits}" th:value="${produit.nom_produit}" th:text="${produit.nom_produit}"></option>
+                    </select>
+
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-sm" style=" margin-right:100px!important; padding-left:85px;padding-right:80px;">Ajouter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

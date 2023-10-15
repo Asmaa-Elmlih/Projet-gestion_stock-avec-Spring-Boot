@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>update Produit</div>
+<form  th:action="@{/api/produit/update/{id}(id=${produit.id})}" th:object="${produit}" method="POST">
+    <label>Nom du produit:</label>
+    <label>
+        <input type="text" th:field="*{nom_produit}" required>
+    </label><br>
+    <label>Catégorie:</label>
+    <label>
+        <input type="text" th:field="*{category}" required>
+    </label><br>
+    <label>Quantite:</label>
+    <label>
+        <input type="number" th:field="*{quantite}" required>
+    </label><br>
+    <label>prix:</label>
+    <label>
+        <input type="number" th:field="*{prix}" required>
+    </label><br>
+    <button type="submit">update</button>
+</form>
+</body>
+</html>

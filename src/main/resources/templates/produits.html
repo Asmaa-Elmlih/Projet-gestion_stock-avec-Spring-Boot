@@ -1,0 +1,84 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring boot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light  px-5 py-3" style="background-color: #caf0f8;">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end px-4" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto px-4">
+            <li class="nav-item dropdown" style="margin-left:1000px">
+                <a class="nav-link dropdown-toggle" href="http://localhost:8082/api/produit/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    List Produit
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="http://localhost:8082/api/produit/list">List Produit</a>
+                    <a class="dropdown-item" href="http://localhost:8082/api/fournisseur/list">List Fournisseur</a>
+<!--                    <div class="dropdown-divider"></div>-->
+                    <a class="dropdown-item" href="http://localhost:8082/api/client/list">List Client</a>
+                </div>
+            </li>
+        </ul>
+
+        <form class="form-inline">
+            <div class="input-group mr-2">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    </div>
+
+    </div>
+
+
+
+    </div>
+</nav>
+<h2 style="text-align: center; font-weight: bold; padding-top: 30px;">Liste des Produits</h2>
+<a th:href="@{/api/produit/addnew}" class="btn btn-primary btn-lg mb-3" style="margin-left: 1480px"> Add Produit </a>
+<div class="mx-auto" style="width: 90%; margin-left: auto; margin-right: auto;">
+<table border="2" class="table  table-md">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nom de Produit</th>
+        <th scope="row">Categories</th>
+        <th>Quantite</th>
+        <th>Prix</th>
+        <th> Actions </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pr : ${produits}">
+        <td th:text="${pr.id}"></td>
+        <td th:text="${pr.nom_produit}"></td>
+        <td th:text="${pr.category}"></td>
+        <td th:text="${pr.quantite}"></td>
+        <td th:text="${pr.prix}"></td>
+        <td> <a th:href="@{/api/produit/update/{id}(id=${pr.id})}" class="btn btn-primary">Update</a>
+            <a th:href="@{/api/produit/delete/{id}(id=${pr.id})}" class="btn btn-danger">Delete</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
